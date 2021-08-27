@@ -2,6 +2,8 @@
 
 KSQL demo for payments events with microservice spring
 
+![arch](arquitectura.png)
+
 ## Software pre requisites
 
 - Kafka Server
