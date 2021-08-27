@@ -2,6 +2,15 @@
 
 KSQL demo for payments events with microservice spring
 
+## Software pre requisites
+
+- Kafka Server
+- KSQLDB Server
+- KSQLDB CLI
+- JAVA 11  
+
+The kafka components are included in docker-compose file
+
 ## Pre requisites
 
 1. Open docker-compose.yml and check default values
@@ -26,9 +35,9 @@ CREATE STREAM payments_stream (personId VARCHAR, idPayment VARCHAR, valuePayment
 
 5. Start microservice 
 
-## URL local
+## Test local
 
-localhost:8080/payments-rest/payment
+POST http://localhost:8080/payments-rest/payment
 
 ### Body
 
@@ -38,5 +47,16 @@ localhost:8080/payments-rest/payment
     "valuePayment": "100"
 }
 
+### Query to validate 
+
+2. In a console ksqldb cli execute  
+
+``` 
+ksql> select * from payments_stream where valuepayment = 100 emit changes;
+```
+
+## References
+
+https://ksqldb.io/quickstart.html
 
 
